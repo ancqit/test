@@ -1,5 +1,7 @@
-<p>body works!</p>
-<div class="content" role="main">
+<div class="content"><p>body works!</p>
+<button (click)="toggle = !toggle">{{toggle ? 'hide' : 'toggle'}}</button>
+</div>
+<div class="content" *ngIf = "toggle">
 
     <!-- Highlight Card -->
     <div class="card highlight-card card-small">
@@ -163,3 +165,18 @@
     </svg>
   
   </div>
+  <app-mission-statement>
+
+  </app-mission-statement>
+  <app-how-itworks>
+
+  </app-how-itworks>
+  <app-apply>
+
+  </app-apply>
+  <app-blog>
+
+  </app-blog>
+  <app-about-us>
+    
+  </app-about-us>

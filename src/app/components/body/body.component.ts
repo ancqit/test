@@ -7,9 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BodyComponent implements OnInit {
 @Input() public title:String | undefined;
+public toggle:boolean = true;
   constructor() { }
 
   ngOnInit(): void {
+    this.toggle=true;
   }
 
 }

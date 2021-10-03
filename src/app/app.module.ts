@@ -15,6 +15,14 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { MissionStatementComponent } from './components/mission-statement/mission-statement.component';
+import { HoeITWorksComponent } from './components/hoe-itworks/hoe-itworks.component';
+import { ApplyDetailsComponent } from './components/apply-details/apply-details.component';
+import { HowITWorksComponent } from './components/how-itworks/how-itworks.component';
+import { ApplyComponent } from './components/apply/apply.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { BlogComponent } from './components/blog/blog.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 
 @NgModule({
@@ -22,7 +30,15 @@ import { FooterComponent } from './components/footer/footer.component';
     AppComponent,
     HeaderComponent,
     BodyComponent,
-    FooterComponent
+    FooterComponent,
+    MissionStatementComponent,
+    HoeITWorksComponent,
+    ApplyDetailsComponent,
+    HowITWorksComponent,
+    ApplyComponent,
+    ContactComponent,
+    BlogComponent,
+    AboutUsComponent
   ],
   imports: [
     MatSliderModule,
