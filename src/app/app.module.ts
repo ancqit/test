@@ -27,6 +27,7 @@ import { ApplyComponent } from './components/apply/apply.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { BlogPageComponent } from './blog-page/blog-page.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     ApplyComponent,
     ContactComponent, 
     BlogComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    BlogPageComponent
   ],
   imports: [
     MatFormFieldModule,

@@ -12,10 +12,16 @@
 </style>
 
 <!-- Toolbar -->
-<app-header></app-header>
+<div>
+    <div>
+      <app-header></app-header>
+     </div>
+     <div>
+<router-outlet [title]='title'></router-outlet>
+</div>
+</div>
 
 
-<app-body [title]='title'></app-body>
 <app-footer></app-footer>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
@@ -26,4 +32,4 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<router-outlet></router-outlet>
+

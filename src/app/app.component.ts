@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'applynext-website is here!  ';
+  public title:String|undefined;
+  ngOninit(): any{
+    
+  this.title = 'applynext-website is here!  ';
+  }
 }
