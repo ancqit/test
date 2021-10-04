@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule } from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
 
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
@@ -42,6 +44,8 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     AboutUsComponent
   ],
   imports: [
+    MatInputModule,
+    MatDialogModule,
     MatButtonModule,
     MatSliderModule,
     MatTooltipModule,
