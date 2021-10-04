@@ -1,12 +1,21 @@
 
-.box {
-    margin-top: 10%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
+
   
-  .box :first-child {
-      align-self:stretch;
+
+  .example-card {
+    max-width: 20%;
+    float :left;
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+
   }
-     
+  .blogImage{
+      
+    margin-top: 20%;
+    width:100%;
+  }
+  .spacer{
+    margin-bottom: 110px; /* how high is your footer */
+    visibility: hidden; 
+  }

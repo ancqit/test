@@ -290,3 +290,18 @@
       visibility: hidden;
     }
   }
+  .toolbar1 {
+    //height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    //background-color: red;
+    //color: white;
+    text-align: center;
+  }

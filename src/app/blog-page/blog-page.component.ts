@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blog-page.component.scss']
 })
 export class BlogPageComponent implements OnInit {
-
+public blogs:any[]|undefined;
   constructor() { }
 
   ngOnInit(): void {
+    this.blogs=[{},{},{},{},{},{},{},{},{},{},{},{}]
   }
 
 }
