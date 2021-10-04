@@ -31,7 +31,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 
 @NgModule({
   declarations: [
-    MatFormFieldModule,
+    
     AppComponent,
     HeaderComponent,
     BodyComponent,
@@ -41,11 +41,12 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     ApplyDetailsComponent,
     HowITWorksComponent,
     ApplyComponent,
-    ContactComponent,
+    ContactComponent, 
     BlogComponent,
     AboutUsComponent
   ],
   imports: [
+    MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
     MatButtonModule,
