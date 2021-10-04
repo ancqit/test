@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatButtonModule } from '@angular/material/button';
 
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
@@ -41,6 +42,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     AboutUsComponent
   ],
   imports: [
+    MatButtonModule,
     MatSliderModule,
     MatTooltipModule,
     BrowserModule,
