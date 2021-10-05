@@ -84,6 +84,7 @@ import {MAT_DIALOG_DEFAULT_OPTIONS,MAT_DIALOG_DATA} from '@angular/material/dial
       useValue: {}
     },
     { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: ApplyComponent,useValue:{}}
   ],
   bootstrap: [AppComponent]
 })
