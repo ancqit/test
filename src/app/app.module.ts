@@ -12,7 +12,7 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule } from '@angular/material/button';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule,MatDialogRef } from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
@@ -31,6 +31,9 @@ import { BlogComponent } from './components/blog/blog.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { BlogPageComponent } from './blog-page/blog-page.component';
 
+import {MAT_DIALOG_DEFAULT_OPTIONS,MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+
 
 @NgModule({
   declarations: [
@@ -48,6 +51,10 @@ import { BlogPageComponent } from './blog-page/blog-page.component';
     BlogComponent,
     AboutUsComponent,
     BlogPageComponent
+  ],
+
+  entryComponents: [
+     ApplyComponent
   ],
   imports: [
     MatProgressBarModule,
@@ -70,7 +77,14 @@ import { BlogPageComponent } from './blog-page/blog-page.component';
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
