@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
@@ -84,7 +85,8 @@ import {MAT_DIALOG_DEFAULT_OPTIONS,MAT_DIALOG_DATA} from '@angular/material/dial
       useValue: {}
     },
     { provide: MAT_DIALOG_DATA, useValue: {} },
-    { provide: ApplyComponent,useValue:{}}
+    { provide: ApplyComponent,useValue:{}},
+    {provide: HttpClient,useValue:{}}
   ],
   bootstrap: [AppComponent]
 })
