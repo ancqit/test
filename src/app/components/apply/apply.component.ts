@@ -25,7 +25,7 @@ profile:DialogData|undefined;
     });
   }
   public alertResult(result:DialogData):void{
-    alert(result);
+    alert('a counseller will cotact you'+result);
   }
 
   ngOnInit(): void {
