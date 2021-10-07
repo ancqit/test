@@ -6,24 +6,7 @@
 </span>
 </div>
 <div mat-dialog-content>
-  <p>What's your Name?</p>
-  <mat-form-field appearance="fill">
-    <mat-label>Full Name Here</mat-label>
-    <input matInput [(ngModel)]="data.name">
-  </mat-form-field>
-  <p>What's your Email?</p>
-  <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput [(ngModel)]="data.email" type="email">
-  </mat-form-field>
-  <p>What's your verification number?</p>
-  <mat-form-field appearance="fill" >
-    <mat-label>Phone </mat-label>
-    <input matInput [(ngModel)]="data.phoneNo" type="tel">
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>  
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
-</div>
+  <app-user-form [data]='data'></app-user-form>
+  
 
 </div>

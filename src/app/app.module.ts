@@ -19,6 +19,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
@@ -32,6 +33,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { BlogPageComponent } from './blog-page/blog-page.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 import {MAT_DIALOG_DEFAULT_OPTIONS,MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -62,6 +64,8 @@ import { UserFormComponent } from './components/user-form/user-form.component';
      ApplyComponent
   ],
   imports: [
+    MatSelectModule,
+    MatStepperModule,
     MatIconModule,
     MatSnackBarModule,
     MatProgressBarModule,

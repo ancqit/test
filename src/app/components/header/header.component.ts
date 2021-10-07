@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(ApplyComponent, {
-      width: '250px',
+      width: '1000px',
       data: {}
     });
 
