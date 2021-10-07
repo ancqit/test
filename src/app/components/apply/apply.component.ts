@@ -1,6 +1,11 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { StateListService } from '../../services/state-list.service'
+import { StateListService } from '../../services/state-list.service';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 export interface DialogData {
   name: string;
@@ -14,24 +19,24 @@ export interface DialogData {
   styleUrls: ['./apply.component.scss']
 })
 export class ApplyComponent implements OnInit {
+ 
+ 
 profile:DialogData|undefined;
 public stateList : any;
+  private horizontalPositionAlert: any='center';
+  private verticalPositionAlert: any='top';
   constructor(public dialogRef: MatDialogRef<ApplyComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    public statelist:StateListService) {}
+    public statelist:StateListService,
+    private _snackBar: MatSnackBar) {}
 
   onNoClick(): void {
-    this.dialogRef.close();
-    this.dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.profile = result;
-      console.log(this.profile);
-    });
-  }
-  public alertResult(result:DialogData):void{
-    alert('a counseller will cotact you');
     
+      this.dialogRef.close();
+    
+   //this.alertResult();
   }
+  
 
   ngOnInit(): void {
     console.log('hello');
@@ -39,5 +44,10 @@ public stateList : any;
     console.log(dummy);
     this.stateList= dummy;
   }
+    public alertResult(){
+    // alert('');
+    
+     
+   }
 
 }

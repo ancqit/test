@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { ApplyComponent } from '../apply/apply.component';
+import {StateListService} from '../../services/state-list.service';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 export interface DialogData {
   name: string;
@@ -13,9 +19,11 @@ export interface DialogData {
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  animal: string | undefined;
+  animal: DialogData | undefined;
   name: string|undefined;
-  constructor(public dialog: MatDialog,public apply:ApplyComponent) { }
+  private horizontalPositionAlert: any='center';
+  private verticalPositionAlert: any='top';
+  constructor(public dialog: MatDialog,public apply:ApplyComponent,public stateservice:StateListService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -28,14 +36,31 @@ export class HeaderComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.animal = result;
-      this.pass(result);
+      this.stateservice.setUserDetails(result);
+      this.pass();      
       console.log(this.animal);
     });
+    
   }
-  pass(result:DialogData){
-    alert(JSON.stringify(result));
-    //this.apply.alertResult(result);
+  pass(){
+   // alert(JSON.stringify(result));
+   // this.stateservice.alert();
+   if (this.stateservice.result === undefined){
+    this._snackBar.open('Allow us to work for you!', 'Provide Details', {
+      horizontalPosition: this.horizontalPositionAlert,
+      verticalPosition: this.verticalPositionAlert,
+      duration:2000,
+    });
+    
   }
-
-
+  else{
+    this._snackBar.open('A counseller will cotact you', 'Stay safe', {
+      horizontalPosition: this.horizontalPositionAlert,
+      verticalPosition: this.verticalPositionAlert,
+      duration:2000,
+    });
+  }
+  }
 }
+
+

@@ -1,6 +1,10 @@
 
 <div class="apply">
-<h1 mat-dialog-title>Hi!</h1>
+  <div mat-dialog-title class="title">
+<span> <h1 >Hi!</h1> </span>
+<span class='last-item'><button mat-dialog-title mat-button  (click)="onNoClick()"><mat-icon>cancel</mat-icon></button>
+</span>
+</div>
 <div mat-dialog-content>
   <p>What's your Name?</p>
   <mat-form-field appearance="fill">
@@ -18,8 +22,7 @@
     <input matInput [(ngModel)]="data.phoneNo" type="tel">
   </mat-form-field>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
+<div mat-dialog-actions>  
   <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
 </div>
 

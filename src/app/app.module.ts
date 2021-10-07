@@ -18,6 +18,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatIconModule} from '@angular/material/icon';
 
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
@@ -33,6 +34,8 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { BlogPageComponent } from './blog-page/blog-page.component';
 
 import {MAT_DIALOG_DEFAULT_OPTIONS,MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 
 
@@ -51,13 +54,16 @@ import {MAT_DIALOG_DEFAULT_OPTIONS,MAT_DIALOG_DATA} from '@angular/material/dial
     ContactComponent, 
     BlogComponent,
     AboutUsComponent,
-    BlogPageComponent
+    BlogPageComponent,
+    UserFormComponent
   ],
 
   entryComponents: [
      ApplyComponent
   ],
   imports: [
+    MatIconModule,
+    MatSnackBarModule,
     MatProgressBarModule,
     MatCardModule,
     MatFormFieldModule,
