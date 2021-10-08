@@ -20,6 +20,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
@@ -64,6 +67,8 @@ import { UserFormComponent } from './components/user-form/user-form.component';
      ApplyComponent
   ],
   imports: [
+    MatSlideToggleModule,
+    MatChipsModule,
     MatSelectModule,
     MatStepperModule,
     MatIconModule,

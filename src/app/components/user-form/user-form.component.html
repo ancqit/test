@@ -1,22 +1,22 @@
 
-  <mat-stepper [orientation]="(stepperOrientation | async)!" [linear]="isLinear" #stepper>
+  <mat-stepper [orientation]="(stepperOrientation | async)!" [linear]="isLinear" #stepper >
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Geography</ng-template>       
-        <mat-form-field appearance="fill" class="center">
-            <mat-label>Country Of Origin</mat-label>
-            <mat-select formControlName="countryOfOrigin" (selectionChange)="update($event.value)">
+           <mat-form-field appearance="fill" class="center">
+             <mat-label>Country Of Origin</mat-label>
+              <mat-select formControlName="countryOfOrigin" (selectionChange)="update($event.value)">
                 <mat-select-trigger>                 
                   <span  class="example-additional-selection">
                     {{firstFormGroup.value.countryOfOrigin}}
                   </span>
                 </mat-select-trigger>
                 <mat-option *ngFor="let count of countryJson.countries;index as i" [value]="count.country">{{count.country}}</mat-option>
-              </mat-select>
-        </mat-form-field>
-          <mat-form-field appearance="fill" *ngIf='statesL'>
+              </mat-select>              
+           </mat-form-field>
+          <mat-form-field appearance="fill" *ngIf='statesL' style="margin-left:25px">
             <mat-label>State Of Origin</mat-label>
-            <mat-select formControlName="state" >
+             <mat-select formControlName="state" >
                 <mat-select-trigger>                 
                   <span  class="example-additional-selection">
                      {{firstFormGroup.value.state}}
@@ -24,50 +24,187 @@
                 </mat-select-trigger>
                 <mat-option *ngFor="let states of statesL " [value]="states">{{states}}</mat-option>
               </mat-select>
-          </mat-form-field>
+          </mat-form-field><br>
           <mat-form-field appearance="fill">
-            <mat-label>Name</mat-label>
-            <input matInput placeholder="Last name, First name" formControlName="name"   required>
+              <mat-label>Country of Interest</mat-label>
+               <mat-select formControlName="interstCountry" multiple>
+                <mat-select-trigger>                 
+                  <span  class="example-additional-selection">
+                     {{firstFormGroup.value.interstCountry}}
+                  </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let countryI of countryInterest " [value]="countryI">{{countryI}}</mat-option>
+              </mat-select>
           </mat-form-field>
         <div>
-           <button mat-button matStepperNext> Next</button>
+           <button mat-button matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Qualification</ng-template>
+        <ng-template matStepLabel>Highest Qualification</ng-template>
         <mat-form-field appearance="fill">
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                 required>
+          <mat-label>Highest Qualification</mat-label>
+            <mat-select formControlName="highestQualification" >
+              <mat-select-trigger>                 
+                <span  class="example-additional-selection">
+                   {{secondFormGroup.value.highestQualification}}
+                </span>
+              </mat-select-trigger>
+              <mat-option *ngFor="let qual of qualifications " [value]="qual">{{qual}}</mat-option>
+            </mat-select>
         </mat-form-field>
+        <mat-form-field appearance="fill" style="margin-left:25px">
+          <mat-label>Grading Scale (out of)</mat-label>
+            <mat-select formControlName="gradingScale" >
+              <mat-select-trigger>                 
+                <span  class="example-additional-selection">
+                   {{secondFormGroup.value.gradingScale}}
+                </span>
+              </mat-select-trigger>
+              <mat-option *ngFor="let grad of gradScale " [value]="grad">{{grad}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" style="margin-left:25px">
+          <mat-label>Grade Average</mat-label>
+           <input matInput formControlName="averageGrade" placeholder="Enter Grade Average"
+                   required>
+          </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
-        </div>
+         </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="thirdFormGroup">
         <form [formGroup]="thirdFormGroup">
-          <ng-template matStepLabel>Qualification</ng-template>
-          <mat-form-field appearance="fill">
-            <mat-label>Address</mat-label>
-            <input matInput formControlName="thirdCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                   required>
-          </mat-form-field>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-          </div>
+                        <ng-template matStepLabel>Exam Scores</ng-template>
+                        <mat-form-field appearance="fill">
+                          <mat-label>English Exam Type</mat-label>
+                          <mat-select formControlName="englishExamType" (selectionChange)="updateExamScores($event.value)">
+                            <mat-select-trigger>                 
+                              <span  class="example-additional-selection">
+                                {{thirdFormGroup.value.englishExamType}}
+                              </span>
+                            </mat-select-trigger>
+                            <mat-option *ngFor="let exam of examEnglisgType " [value]="exam">{{exam}}</mat-option>
+                          </mat-select>
+                        </mat-form-field><br>
+                        <div class="examScores">
+                            <mat-form-field appearance='fill' *ngIf='toeflScores' style="margin-left:25px">
+                                <input matInput formControlName="listening" placeholder="Listening"
+                                    required>
+                            </mat-form-field>
+                        
+                              <mat-form-field appearance='fill' *ngIf='toeflScores' style="margin-left:25px">
+                                <input matInput formControlName="reading" placeholder="Reading"
+                                    required>
+                              </mat-form-field>
+                              <mat-form-field appearance='fill' *ngIf='toeflScores' style="margin-left:25px">
+                                <input matInput formControlName="writing" placeholder="Writing"
+                                    required>
+                                </mat-form-field>
+                              <mat-form-field appearance='fill' *ngIf='toeflScores' style="margin-left:25px">
+                                  <input matInput formControlName="speaking" placeholder="Speaking"
+                                    required>
+                              </mat-form-field>
+                            <mat-form-field appearance='fill' *ngIf='pteScores' style="margin-left:25px">
+                              <input matInput formControlName="overall" placeholder="Overall"
+                                    required>
+                                    
+                              </mat-form-field>
+                          </div>
+                          
+                           
+<div>
+      <mat-label>GRE Score</mat-label>
+      <mat-slide-toggle formControlName='hasGreScore' style="float:right" name='hasGreScore' (change)="showGreScores($event)" ></mat-slide-toggle><br>
+  
+  <div *ngIf='greScore' class='examScores'>
+<mat-form-field appearance='fill'  style="margin-left:25px">
+  <input matInput formControlName="verbalGreScore" placeholder="GRE Verbal Score" required>
+</mat-form-field>
+<mat-form-field appearance='fill'  style="margin-left:25px">
+  <input matInput formControlName="verbalGreRank" placeholder="GRE Verbal Rank" required>
+</mat-form-field>
+<mat-form-field appearance='fill'  style="margin-left:25px">
+  <input matInput formControlName="quantGreScore" placeholder="GRE Quantitative Score" required>
+</mat-form-field>
+<mat-form-field appearance='fill' style="margin-left:25px">
+  <input matInput formControlName="quantGreRank" placeholder="GRE Quantitative Rank %" required>
+</mat-form-field>
+<mat-form-field appearance='fill'  style="margin-left:25px">
+  <input matInput formControlName="writingGreScore" placeholder="GRE Writing Score" required>
+</mat-form-field>
+<mat-form-field appearance='fill'  style="margin-left:25px">
+  <input matInput formControlName="writingGreRank" placeholder="GRE Writing Rank %" required>              
+</mat-form-field>   
+      </div>
+      <br>
+
+    
+  
+       <mat-label>GMAT Score</mat-label>
+       <mat-slide-toggle  mat-slide-toggle formControlName='hasGmatScore' style="float:right" name='hasGmatScore' (change)="showGmatScores($event)"></mat-slide-toggle>
+      
+      <div *ngIf='gmatScores' class='examScores'>
+          <mat-form-field appearance='fill'  style="margin-left:25px">
+              <input matInput formControlName="verbalGmatScore" placeholder="GMAT Verbal Score"
+           required>
+</mat-form-field>
+<mat-form-field appearance='fill'  style="margin-left:25px">
+<input matInput formControlName="verbalGmatRank" placeholder="GMAT Verbal Rank"
+           required>
+</mat-form-field>
+<mat-form-field appearance='fill'  style="margin-left:25px">
+<input matInput formControlName="quantGmatScore" placeholder="GMAT Quantitative Score"
+           required>
+</mat-form-field>
+<mat-form-field appearance='fill' style="margin-left:25px">
+<input matInput formControlName="quantGmatRank" placeholder="GMAT Quantitative Rank %"
+           required>
+</mat-form-field>
+<mat-form-field appearance='fill'  style="margin-left:25px">
+<input matInput formControlName="writingGmatScore" placeholder="GMAT Writing Score"
+           required>
+</mat-form-field>
+<mat-form-field appearance='fill'  style="margin-left:25px">
+<input matInput formControlName="writingGmatRank" placeholder="GMAT Writing Rank %"
+           required>
+</mat-form-field>
+<mat-form-field appearance='fill'  style="margin-left:25px">
+<input matInput formControlName="totalGmatScore" placeholder="GMAT Total Score"
+           required>
+</mat-form-field>
+<mat-form-field appearance='fill' style="margin-left:25px">
+<input matInput formControlName="totalGmatRank" placeholder="GMAT Total Rank %"
+           required>
+</mat-form-field>
+</div>
+</div>
+                        <div>
+                          <button mat-button matStepperPrevious>Back</button>
+                          <button mat-button matStepperNext>Next</button>
+                        </div>
         </form>
-      </mat-step>    
+      </mat-step>     -->
          <mat-step [stepControl]="fourthFormGroup">
             <form [formGroup]="fourthFormGroup">
-              <ng-template matStepLabel>Qualification</ng-template>
+              <ng-template matStepLabel>Introduction</ng-template>
               <mat-form-field appearance="fill">
-                <mat-label>Address</mat-label>
-                <input matInput formControlName="fourthCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" placeholder="Full Name"
+                       required>
+              </mat-form-field><br>
+              <mat-form-field appearance="fill">
+                <mat-label>Email Address</mat-label>
+                <input matInput formControlName="email" placeholder="email" type="email"
+                       required>
+              </mat-form-field><br>
+              <mat-form-field appearance="fill">
+                <mat-label>Verification Number</mat-label>
+                <input matInput formControlName="phoneNumber" placeholder="Contact Number" type="tel"
                        required>
               </mat-form-field>
               <div>
@@ -79,7 +216,7 @@
         <mat-step>
       <ng-template matStepLabel>Done</ng-template>
       <p>You are now done.</p>
-      <div>
+    <div>
         <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Finish</button>
       </div>
     </mat-step>
