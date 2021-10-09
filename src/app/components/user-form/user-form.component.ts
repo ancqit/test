@@ -5,6 +5,11 @@ import {StepperOrientation} from '@angular/material/stepper';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import { StateListService} from '../../services/state-list.service';
+import firebase from 'firebase/app';
+import "firebase/auth";
+import "firebase/firestore";
+import { AngularFireAuth  } from '@angular/fire/auth';
+
 
 @Component({
   selector: 'app-user-form',
@@ -34,6 +39,16 @@ export class UserFormComponent implements OnInit {
   ilets: boolean|undefined=false;
   gmatScores: boolean=false;
   greScore: boolean=false;
+  reCaptchaVerifier:any;
+  otpPhoneNumber:any;
+  config={
+    allowNumbersOnly:true,
+    length:6,
+    isPasswordInput:false,
+    disableAutoFocus:false,
+    placeholder:''
+  };
+  otpcode: any;
   constructor(
     private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver, private stateService:StateListService
     ) {
@@ -203,5 +218,19 @@ showGmatScores(res:any){
   }else {
     this.gmatScores=false;    
   }
+}
+getOTP(res:any): void{
+  console.log(res);
+  this.otpPhoneNumber='+91'+res;
+  console.log(this.otpPhoneNumber);
+    this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-capcha',{size:'invisible'});
+
+}
+onOtpChange(res:any){
+console.log(res);
+this.otpcode=res;
+}
+verify(){
+
 }
 }

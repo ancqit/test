@@ -35,12 +35,15 @@ import { BlogComponent } from './components/blog/blog.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { BlogPageComponent } from './blog-page/blog-page.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { NgOtpInputModule } from  'ng-otp-input';
 
 import {MAT_DIALOG_DEFAULT_OPTIONS,MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { UserFormComponent } from './components/user-form/user-form.component';
 //import { list} from '@angular/fire/database'
-
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -65,6 +68,10 @@ import { UserFormComponent } from './components/user-form/user-form.component';
      ApplyComponent
   ],
   imports: [
+    NgOtpInputModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     MatSlideToggleModule,
     MatChipsModule,
     MatSelectModule,

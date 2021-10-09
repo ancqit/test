@@ -204,9 +204,15 @@
               </mat-form-field><br>
               <mat-form-field appearance="fill">
                 <mat-label>Verification Number</mat-label>
-                <input matInput formControlName="phoneNumber" placeholder="Contact Number" type="tel"
+                <input matInput formControlName="phoneNumber" placeholder="123-4567-123" type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}"
                        required>
               </mat-form-field>
+
+              <button mat-button (click)='getOTP(fourthFormGroup.value.phoneNumber)'>Get OTP</button>
+              <div id='sign-in-capcha'></div>
+              <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="config"></ng-otp-input>
+              <button mat-button (click)="verify()" >Verify</button>
+
               <div>
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button matStepperNext (click)='value()'>Next</button>
