@@ -11,7 +11,6 @@ import { HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule } from '@angular/material/button';
 import {MatDialogModule,MatDialogRef } from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
@@ -22,7 +21,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
 
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
@@ -41,7 +39,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MAT_DIALOG_DEFAULT_OPTIONS,MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { UserFormComponent } from './components/user-form/user-form.component';
-
+//import { list} from '@angular/fire/database'
 
 
 @NgModule({
@@ -80,7 +78,6 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     MatDialogModule,
     MatButtonModule,
     MatSliderModule,
-    MatTooltipModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -102,6 +99,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: ApplyComponent,useValue:{}},
     {provide: HttpClient,useValue:{}}
+
   ],
   bootstrap: [AppComponent]
 })
