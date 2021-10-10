@@ -10,13 +10,19 @@ import { ApplyComponent} from '../components/apply/apply.component';
 export class StateListService {
 jsonData=jsonC;
  public result: any;
+  verificationId: any;
   constructor(
     private http: HttpClient,
     private apply:ApplyComponent
     ) {
     
 }
-
+public  setid(id:any){
+  this.verificationId=id;
+}
+public id(){
+  return this.verificationId;
+}
 public getJSON(): Observable<any> {
     return this.jsonData;
 }

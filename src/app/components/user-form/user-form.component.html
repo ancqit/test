@@ -210,8 +210,8 @@
 
               <button mat-button (click)='getOTP(fourthFormGroup.value.phoneNumber)'>Get OTP</button>
               <div id='sign-in-capcha'></div>
-              <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="config"></ng-otp-input>
-              <button mat-button (click)="verify()" >Verify</button>
+              <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="config" *ngIf='hideOtp' ></ng-otp-input>
+              <button mat-button (click)="verify()" *ngIf='hideOtp'>Verify</button>
 
               <div>
                 <button mat-button matStepperPrevious>Back</button>

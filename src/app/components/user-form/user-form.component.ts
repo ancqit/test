@@ -8,8 +8,24 @@ import { StateListService} from '../../services/state-list.service';
 import firebase from 'firebase/app';
 import "firebase/auth";
 import "firebase/firestore";
-import { AngularFireAuth  } from '@angular/fire/auth';
+import {MatSnackBar} from '@angular/material/snack-bar'
 
+
+let config={
+  apiKey: "AIzaSyBW6-5ciP6jqwcMiwipcN4SEkxdZ0o3TJ8",
+
+  authDomain: "otpverificator.firebaseapp.com",
+
+  projectId: "otpverificator",
+
+  storageBucket: "otpverificator.appspot.com",
+
+  messagingSenderId: "965308024918",
+
+  appId: "1:965308024918:web:411c6b1f6e978405b6d3f7",
+
+  measurementId: "G-80W0X8LVGX"
+}
 
 @Component({
   selector: 'app-user-form',
@@ -49,8 +65,10 @@ export class UserFormComponent implements OnInit {
     placeholder:''
   };
   otpcode: any;
+  hideOtp:boolean=false;
   constructor(
-    private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver, private stateService:StateListService
+    private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver, private stateService:StateListService,
+    private _snackBar:MatSnackBar
     ) {
       this.countryJson=this.stateService.getJSON();
     
@@ -60,7 +78,11 @@ export class UserFormComponent implements OnInit {
 }
    
 
-  ngOnInit(): void {
+  ngOnInit() {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(config);
+  }
+    
     this.firstFormGroup = this._formBuilder.group({
       //name: ['', Validators.required],
       countryOfOrigin:['',Validators.required],
@@ -223,14 +245,33 @@ getOTP(res:any): void{
   console.log(res);
   this.otpPhoneNumber='+91'+res;
   console.log(this.otpPhoneNumber);
-    this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-capcha',{size:'invisible'});
+  this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-capcha',{size:'invisible'});
+  firebase.auth().signInWithPhoneNumber(this.otpPhoneNumber , this.reCaptchaVerifier).then((confirmationResult)=>{
+    this.stateService.setid(confirmationResult.verificationId);
+      console.log(confirmationResult);
+  }).catch((error)=>{
+    console.log(error.message);
+    setTimeout(()=>{
+      console.log('here');
+    },5000)
+  })
+  this.hideOtp=true;
 
 }
-onOtpChange(res:any){
+onOtpChange(res:any): void{
 console.log(res);
 this.otpcode=res;
+
 }
 verify(){
-
+  let credential = firebase.auth.PhoneAuthProvider.credential(this.stateService.id(),this.otpcode);
+  firebase.auth().signInWithCredential(credential).then(()=>{
+    this._snackBar.open('Your number has been authenticated ', 'stay safe', {
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      duration:5000,
+    });
+  });
+this.hideOtp=false;
 }
 }

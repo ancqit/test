@@ -69,7 +69,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
   ],
   imports: [
     NgOtpInputModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
     MatSlideToggleModule,
