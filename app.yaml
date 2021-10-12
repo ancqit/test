@@ -1,0 +1,23 @@
+runtime: python27
+api_version : 1
+threadsafe: true
+handlers:
+       - url: /
+         static_files: dist/applynext-website/index.html
+         upload: dist/applynext-website/index.html
+    
+       - url: /
+         static_dir: dist/applynext-website
+    
+   
+
+
+skip_files:
+  - e2e
+  - node_modules/
+  - src/
+  - coverage
+  - ^(.*/)?\..*$
+  - ^(.*/)?.*\.md$
+  - ^(.*/)?.*\.yaml$
+  - ^LICENSE
